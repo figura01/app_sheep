@@ -13,12 +13,12 @@ class CreateUserSpendTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_spend', function (Blueprint $table) {
+        Schema::create('spend_user', function (Blueprint $table) {
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('spend_id')->nullable();
             $table->decimal('price', 7, 2);
 
-            $table->timestamps();
+       
             $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->foreign('spend_id')->references('id')->on('spends')->onDelete('SET NULL');
         });
@@ -31,6 +31,6 @@ class CreateUserSpendTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_spend');
+        Schema::dropIfExists('spend_user');
     }
 }

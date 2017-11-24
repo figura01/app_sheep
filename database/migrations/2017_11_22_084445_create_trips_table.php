@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartsTable extends Migration
+class CreateTripsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreatePartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parts', function (Blueprint $table) {
+        Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->text('description');
+
             $table->unsignedInteger('user_id')->nullable();
-            $table->decimal('day', 5, 1);
-            $table->dateTime('started')->nullable();
-
-            $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +31,6 @@ class CreatePartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parts');
+        Schema::dropIfExists('trips');
     }
 }

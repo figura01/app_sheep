@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+Auth::routes();
+
+Route::get('/', 'FrontController@index')->name('home');
+Route::get('/historique', 'FrontController@showAllSpends')->name('historique');
+Route::get('/addspend', 'FrontController@addSpend')->name('addspend');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

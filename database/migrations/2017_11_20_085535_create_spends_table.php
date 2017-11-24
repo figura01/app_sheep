@@ -17,8 +17,9 @@ class CreateSpendsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->longText('description');
-            $table->date('pay_date');
-            $table->enum('status', ['in progress', 'paid', 'canceled']);
+            $table->dateTime('pay_date');
+            $table->decimal('price', 7,2);
+            $table->enum('status', ['accound', 'paid']);
             $table->timestamps();
         });
     }
